@@ -38,12 +38,13 @@ sudo apt-get build-dep build-essential -y
 echo -e "\n---- Install Git ----"
 sudo apt-get install git -y
 sudo apt-get install python-pip
+
 # Install AerooLib:
 echo -e "\n---- Install AerooLib ----"
 sudo apt-get install python-genshi python-cairo python-lxml libreoffice-script-provider-python libreoffice-base python-cups -y
 sudo apt-get install python-setuptools python3-pip -yf
-
-sudo mkdir /opt/aeroo
+sudo mkdir -p /opt/odoo/custom/addons
+sudo mkdir -p /opt/aeroo
 cd /opt/aeroo
 sudo git clone -b py2.x https://github.com/aeroo/aeroolib.git
 cd /opt/aeroo/aeroolib
