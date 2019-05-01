@@ -77,6 +77,7 @@ echo -e "\n---- Install AerooDOCS (see: https://github.com/aeroo/aeroo_docs/wiki
 sudo pip3 install jsonrpc2 daemonize
 
 echo -e "\n---- create conf file for AerooDOCS ----"
+sudo rm /etc/aeroo-docs.conf
 sudo touch /etc/aeroo-docs.conf
 sudo su root -c "echo '[start]' >> /etc/aeroo-docs.conf"
 sudo su root -c "echo 'interface = localhost' >> /etc/aeroo-docs.conf"
