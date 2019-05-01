@@ -69,6 +69,7 @@ sudo su root -c "echo '/usr/bin/soffice --nologo --nofirststartwizard --headless
 
 sudo chmod +x /etc/init.d/office
 sudo update-rc.d office defaults
+sudo /etc/init.d/office
 
 # Install AerooDOCS
 echo -e "\n---- Install AerooDOCS (see: https://github.com/aeroo/aeroo_docs/wiki/Installation-example-for-Ubuntu-14.04-LTS for original post): ----"
