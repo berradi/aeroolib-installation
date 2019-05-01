@@ -37,11 +37,12 @@ sudo apt-get build-dep build-essential -y
 # Install Git:
 echo -e "\n---- Install Git ----"
 sudo apt-get install git -y
-
+sudo apt-get install python-pip
 # Install AerooLib:
 echo -e "\n---- Install AerooLib ----"
 sudo apt-get install python-genshi python-cairo python-lxml libreoffice-script-provider-python libreoffice-base python-cups -y
 sudo apt-get install python-setuptools python3-pip -yf
+
 sudo mkdir /opt/aeroo
 cd /opt/aeroo
 sudo git clone -b py2.x https://github.com/aeroo/aeroolib.git
@@ -99,13 +100,15 @@ sudo service aeroo-docs restart
 # If you encounter and error "Unable to lock on the pidfile while trying #16 just restart the service (sudo service aeroo-docs restart).
 
 # Install Odoo from Source
-echo -e "\n---- Install Odoo 8 from Source (Github) ----"
+echo -e "\n---- Install Odoo 8 from deb ----"
 
 while true; do
     read -p "Would you like to install Odoo 8 (y/n)?" yn
     case $yn in
-        [Yy]* ) sudo wget https://raw.githubusercontent.com/lukebranch/odoo-install-scripts/8.0/odoo-saas4/ubuntu-14-04/odoo_install.sh
-        sudo sh odoo_install.sh
+        [Yy]* ) sudo wget -O - https://nightly.odoo.com/odoo.key | apt-key add -
+        sudo echo "deb http://nightly.odoo.com/8.0/nightly/deb/ ./" >> /etc/apt/sources.list
+        sudo apt-get update && apt-get install odoo
+        
         break;;
         [Nn]* ) break;;
         * ) echo "Please answer yes or no.";;
